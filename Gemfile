@@ -61,3 +61,5 @@ gem 'jquery-ui-rails'
 gem 'rails-i18n', '~> 4.0.0'
 
 gem 'rubocop', require: false
+
+gem "pundit"
