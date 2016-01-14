@@ -1,0 +1,28 @@
+.navbar.navbar-inverse
+  .navbar-header
+    %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+      %span.icon-bar
+      %span.icon-bar
+      %span.icon-bar
+    .navbar-brand
+      FOKI JEZE MOKRE DOLARY
+  .navbar-collapse.collapse
+    %ul.nav.navbar-nav.navbar-right
+      %li=link_to "Forum", index_path
+      %li
+        =link_to users_path do
+          %span.glyphicon.glyphicon-briefcase
+          Konto
+      %li=link_to "Heheszky"
+      -if user_signed_in?
+        %li= link_to 'Edytuj Profil', edit_user_registration_path, class:'btn'
+        %li= link_to "Logout", destroy_user_session_path, method: :delete, class:'btn'
+      -else
+        %li
+          =link_to new_user_registration_path do
+            %span.glyphicon.glyphicon-user
+            Zarejestruj
+        %li
+          =link_to new_user_session_path do
+            %span.glyphicon.glyphicon-log-in
+            Zaloguj
