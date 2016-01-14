@@ -17,7 +17,7 @@
         %ul.nav.navbar-nav.navbar-right
           %li=link_to "Forum", index_path
           %li
-            =link_to "#" do
+            =link_to users_path do
               %span.glyphicon.glyphicon-briefcase
               Konto
           %li=link_to "Heheszky"
@@ -30,6 +30,8 @@
               %span.glyphicon.glyphicon-log-in
               Zaloguj
   .container
+    -flash.each do |key, value|
+      %div{:class => "alert alert-#{key}" }= value
     = yield
   .footer
     %hr
