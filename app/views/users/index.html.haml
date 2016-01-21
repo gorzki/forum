@@ -1,0 +1,16 @@
+%h1 User list
+.table-responsive
+  %table.table
+    %tr.top
+      %th.text-center #
+      %th.text-center User
+      %th.text-center Action
+    - @users.each do |user|
+      %tr.list
+        %td.text-center= user.id
+        %td.text-center= user.email
+        %td.text-center
+          .btn-group
+            =link_to "Show", user_path(user), class:'btn btn-info'
+            =link_to "Edit", edit_user_registration_path(user), class:'btn btn-default'
+            =link_to "Destroy", user, data: {method: :delete, confirm: "Jesteś pewien?"}, class:'btn btn-danger'
