@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  enum role: [:user, :admin]
+  enum role: [:user, :admin, :guest, :moderator]
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable

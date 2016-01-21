@@ -19,7 +19,8 @@ class UserPolicy
   end
 
   def destroy?
-    @current_user.admin? || @current_user == @user
+   return false if @current_user == @user
+   @current_user.admin?
   end
 
 
