@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :messeges
+
   enum role: [:user, :admin, :guest, :moderator]
 
   devise :database_authenticatable, :registerable,
