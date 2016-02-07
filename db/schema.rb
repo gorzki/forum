@@ -21,17 +21,7 @@ ActiveRecord::Schema.define(version: 20160122142203) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "groups", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "homes", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "messeges", force: :cascade do |t|
+  create_table "messages", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
     t.datetime "created_at",  null: false
@@ -45,7 +35,6 @@ ActiveRecord::Schema.define(version: 20160122142203) do
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.integer  "group_id"
     t.integer  "board_id"
   end
 
