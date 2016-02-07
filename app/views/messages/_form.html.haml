@@ -1,0 +1,21 @@
+= form_for @message do |f|
+  - if @message.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@message.errors.count, "error")
+        prohibited this advert from being saved:
+      %ul
+        - @message.errors.full_messages.each do |msg|
+          %li= msg
+  %p
+    = f.label :title, :title
+    = f.text_field :title, class: "form-control", placeholder: "New message"
+  %p
+    = f.label :description
+    = f.text_area :description, class: "form-control", placeholder: "123..."
+  %p
+    = f.label :receiver_id
+    = f.select :receiver_id, options_from_collection_for_select(User.all, :id, :email)
+  %p
+    = f.hidden_field :sender_id, value: current_user.id
+    = f.submit class: "btn btn-primary"

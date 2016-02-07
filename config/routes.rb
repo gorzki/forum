@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get '/index' => 'home#index'
   root :to =>  'home#index'
   resources :users
-  resources :messeges
+  resources :messages
 
 
 end
