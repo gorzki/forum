@@ -11,6 +11,11 @@ class MessagesController < ApplicationController
     @message = Message.new
   end
 
+  def respond
+    @respond_message = Message.find(params[:id])
+    @message = Message.new
+  end
+
   def create
     @message = Message.new(message_params)
 
@@ -20,7 +25,7 @@ class MessagesController < ApplicationController
         format.json { render action: 'show', status: :created, louserion: @message }
       else
         format.html { render action: 'new' }
-        format.json { render json: @forum.errors, status: :unprocessable_entity }
+        format.json { render json: @message.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -49,6 +54,6 @@ class MessagesController < ApplicationController
     end
 
     def message_params
-      params.require(:message).permit(:title, :description, :sender_id, :receiver_id)
+      params.require(:message).permit(:title, :description, :sender_id, :receiver_id, :parent_id)
     end
 end
