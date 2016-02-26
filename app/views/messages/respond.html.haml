@@ -1,4 +1,4 @@
-= form_for @message do |f|
+= form_for @message, :url => {:controller => :messages, :action => :respond_create} do |f|
   - if @message.errors.any?
     #error_explanation
       %h2
@@ -8,8 +8,7 @@
         - @message.errors.full_messages.each do |msg|
           %li= msg
   %p
-    = f.label :title, :title
-    = f.text_field :title, class: "form-control", placeholder: "New message"
+    = f.hidden_field :title, value: @respond_message.title
   %p
     = f.label :description
     = f.text_area :description, class: "form-control", placeholder: "123..."
