@@ -24,7 +24,7 @@ class MessagesController < ApplicationController
     respond_to do |format|
       if @message.save
         format.html { redirect_to message_path(@message.parent_id), notice: 'message was successfully created.' }
-        format.json { render action: 'show', status: :created, louserion: @message }
+        format.json { render action: 'show', status: :created}
       else
         format.html { render action: 'new' }
         format.json { render json: @message.errors, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class MessagesController < ApplicationController
     respond_to do |format|
       if @message.save
         format.html { redirect_to message_path(@message), notice: 'message was successfully created.' }
-        format.json { render action: 'show', status: :created, louserion: @message }
+        format.json { render action: 'show', status: :created }
       else
         format.html { render action: 'new' }
         format.json { render json: @message.errors, status: :unprocessable_entity }
