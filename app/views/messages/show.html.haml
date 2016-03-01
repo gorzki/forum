@@ -1,0 +1,16 @@
+%h1
+  Messages
+.panel.panel-primary
+  .panel-heading
+    .panel-title
+      =@message.title
+  .panel-body
+    =@message.description
+-@messages.each do |message|
+  .panel.panel-primary
+    .panel-heading
+      .panel-title
+        =@message.title
+    .panel-body
+      =message.description
+=link_to "Odpowiedz", message_respond_path, class:"btn btn-info"

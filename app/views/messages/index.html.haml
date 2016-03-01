@@ -1,0 +1,24 @@
+%h1 Messeges
+.table-responsive
+  %table.table
+    %tr.top
+      %th.text-center #
+      %th.text-center Title
+      %th.text-center Description
+      %th.text-center Sender
+      %th.text-center Receiver
+      %th.text-center Action
+    - @messages.each do |message|
+      %tr.list
+        %td.text-center= message.id
+        %td.text-center= message.title
+        %td.text-center= message.description
+        %td.text-center= message.sender_id
+        %td.text-center= message.receiver_id
+        %td.text-center
+          .btn-group
+            =link_to "Show", message_path(message), class:'btn btn-info'
+            =link_to "Edit", edit_user_registration_path(message), class:'btn btn-default'
+            =link_to "Destroy", message, data: {method: :delete, confirm: "Jesteś pewien?"}, class:'btn btn-danger'
+
+=link_to "New", new_message_path, class:"btn btn-info"

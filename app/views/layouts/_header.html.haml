@@ -13,7 +13,10 @@
         =link_to users_path do
           %span.glyphicon.glyphicon-briefcase
           Konto
-      %li=link_to "Heheszky"
+      %li
+        =link_to messages_path do
+          %span.glyphicon.glyphicon-envelope
+          Wiadomosci
       -if user_signed_in?
         %li= link_to 'Edytuj Profil', edit_user_registration_path, class:'btn'
         %li= link_to "Logout", destroy_user_session_path, method: :delete, class:'btn'
