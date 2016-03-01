@@ -1,15 +1,15 @@
-%h1 Messeges
+%h1 Wiadomosci
 .table-responsive
   %table.table
-    %tr.top
+    %tr
       %th.text-center #
-      %th.text-center Title
-      %th.text-center Description
-      %th.text-center Sender
-      %th.text-center Receiver
-      %th.text-center Action
+      %th.text-center Tytuł
+      %th.text-center Opis
+      %th.text-center Nadawca
+      %th.text-center Odbiorca
+      %th.text-center Akcja
     - @messages.each do |message|
-      %tr.list
+      %tr
         %td.text-center= message.id
         %td.text-center= message.title
         %td.text-center= message.description

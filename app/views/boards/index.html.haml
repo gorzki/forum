@@ -1,0 +1,17 @@
+%h1 Forum
+.table-responsive
+  %table.table
+    %tr
+      %th.text-center #
+      %th.text-center Tytuł
+      %th.text-center Akcja
+    - @boards.each do |board|
+      %tr
+        %td.text-center= board.id
+        %td.text-center= board.title
+        %td.text-center
+          .btn-group
+            =link_to "Show", board_path(board), class:'btn btn-info'
+            =link_to "Edit", edit_board_path(board), class:'btn btn-default'
+            =link_to "Destroy", board, data: {method: :delete, confirm: "Jesteś pewien?"}, class:'btn btn-danger'
+=link_to "New", new_board_path, class:'btn btn-primary'
