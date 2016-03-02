@@ -1,0 +1,18 @@
+= form_for [@board, @post] do |f|
+  - if @post.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@post.errors.count, "error")
+        prohibited this advert from being saved:
+      %ul
+        - @post.errors.full_posts.each do |msg|
+          %li= msg
+  %p
+    = f.label :title, :title
+    = f.text_field :title, class: "form-control", placeholder: "New post"
+  %p
+    = f.label :description, :description
+    = f.text_field :description, class: "form-control", placeholder: ":3"
+
+    = f.hidden_field :board_id, :value => @board.id
+    = f.submit class: "btn btn-primary"

@@ -1,12 +1,12 @@
-%h1 User list
+%h1 Uzytkownicy
 .table-responsive
   %table.table
-    %tr.top
+    %tr
       %th.text-center #
-      %th.text-center User
-      %th.text-center Action
+      %th.text-center Uzytkownik
+      %th.text-center Akcja
     - @users.each do |user|
-      %tr.list
+      %tr
         %td.text-center= user.id
         %td.text-center= user.email
         %td.text-center

@@ -1,0 +1,14 @@
+= form_for @board do |f|
+  - if @board.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@board.errors.count, "error")
+        prohibited this advert from being saved:
+      %ul
+        - @board.errors.full_boards.each do |msg|
+          %li= msg
+  %p
+    = f.label :title, :title
+    = f.text_field :title, class: "form-control", placeholder: "New board"
+  %p
+    = f.submit class: "btn btn-primary"

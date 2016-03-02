@@ -6,5 +6,9 @@ Rails.application.routes.draw do
   resources :users
   resources :messages
   post '/message' => "messages#respond_create"
+  resources :boards do
+    resources :posts
+    
+  end
 
 end

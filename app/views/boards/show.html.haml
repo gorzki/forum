@@ -1,0 +1,13 @@
+%h1
+  =@board.title
+.table-responsive
+  %table.table
+    %tr
+      %th.text-center #
+    - @posts.each do |post|
+      %tr
+        %td.text-center=link_to post.title, board_post_path(@board, post.id)
+
+
+  =link_to "Nowy post", new_board_post_path(@board), class:"btn btn-primary"
+  =link_to "Back", :back, class:"btn btn-info"
