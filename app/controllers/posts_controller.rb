@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_post, only: [:show,  :edit, :update, :destroy]
   before_action :set_board, only: [:show, :new, :create, :edit, :update, :destroy]
 

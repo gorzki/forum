@@ -1,5 +1,6 @@
 class BoardsController < ApplicationController
   before_action :set_board, only: [:show,  :edit, :update, :destroy]
+  before_filter :authenticate_user!
 
   def index
     @boards = Board.all

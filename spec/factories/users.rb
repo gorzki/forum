@@ -5,6 +5,8 @@ FactoryGirl.define do
   end
   factory :user_2, class: User do
     email "konska@konski.pl"
-    password "passy123"
+  end
+  factory :user_3, class: User do
+    password "czekoalda1"
   end
 end
