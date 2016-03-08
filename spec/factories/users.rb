@@ -3,10 +3,4 @@ FactoryGirl.define do
     email "user@gmail.com"
     password  "password123"
   end
-  factory :user_2, class: User do
-    email "konska@konski.pl"
-  end
-  factory :user_3, class: User do
-    password "czekoalda1"
-  end
 end
