@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
   before_action :set_message, only: [:edit, :update, :destroy]
+  before_filter :authenticate_user!
   def index
     @messages = Message.all.where(:parent_id => nil)
   end
