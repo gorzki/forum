@@ -1,9 +1,12 @@
 class PostsController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_post, only: [:show,  :edit, :update, :destroy]
-  before_action :set_board, only: [:show, :new, :create, :edit, :update, :destroy]
+  before_action :set_board
 
-
+  def index
+    @posts = Post.all.where(:board_id => @board.id)
+    @post = Post.new
+  end
   def show
 
   end
@@ -19,9 +22,11 @@ class PostsController < ApplicationController
       if @post.save
         format.html { redirect_to board_post_path(@board,@post), notice: 'post was successfully created.' }
         format.json { render action: 'show', status: :created }
+        format.js
       else
         format.html { render action: 'new' }
         format.json { render json: @post.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -34,9 +39,11 @@ class PostsController < ApplicationController
       if @post.update(post_params)
         format.html { redirect_to board_post_path, notice: 'post was successfully updated.' }
         format.json { head :no_content }
+        format.js
       else
         format.html { render action: 'edit' }
         format.json { render json: @post.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -46,6 +53,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to posts_path }
       format.json { head :no_content }
+      format.js
     end
   end
 

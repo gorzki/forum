@@ -1,13 +1,9 @@
 class BoardsController < ApplicationController
-  before_action :set_board, only: [:show,  :edit, :update, :destroy]
+  before_action :set_board, only: [:edit, :update, :destroy]
   before_filter :authenticate_user!
 
   def index
     @boards = Board.all
-  end
-
-  def show
-    @posts = Post.all
   end
 
   def new
@@ -19,7 +15,7 @@ class BoardsController < ApplicationController
 
     respond_to do |format|
       if @board.save
-        format.html { redirect_to board_path(@board), notice: 'board was successfully created.' }
+        format.html { redirect_to board_posts_path(@board), notice: 'board was successfully created.' }
         format.json { render action: 'show', status: :created }
       else
         format.html { render action: 'new' }

@@ -1,0 +1,33 @@
+.col-md-4{:id => "post_#{post.id}"}
+  .panel.panel-primary
+    .panel-heading
+      .panel-title
+        =post.title
+    .panel-body
+      =post.description
+    .panel-footer
+      %button.btn.btn-warning{"data-target" => "#updatepost_#{post.id}", "data-toggle" => "modal", :type => "button"}
+        Edytuj
+      = link_to 'Destroy', [@board,post], method: :delete, class: "btn btn-danger", remote: true
+
+=form_for [@board,post], :method => :put, remote: true do |f|
+  .modal.fade{"aria-labelledby" => "myModalLabel", :id => "updatepost_#{post.id}", :role => "dialog", :tabindex => "-1"}
+    .modal-dialog
+      .modal-content
+        .modal-header
+          %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+            %span{"aria-hidden" => "true"} &times;
+          %h4#myModalLabel.modal-title
+            Nowy post
+        .modal-body
+          %p
+            = f.label :title, :title
+            = f.text_field :title, class: "form-control"
+          %p
+            = f.label :description, :description
+            = f.text_field :description, class: "form-control"
+
+            = f.hidden_field :board_id, :value => @board.id, class: "form-control"
+        .modal-footer
+          %button.btn.btn-default{"data-dismiss" => "modal", :id => "updatebutton_#{post.id}", :type => "button"} Close
+          = submit_tag "Update", class: "btn btn-primary"
