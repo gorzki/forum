@@ -7,7 +7,7 @@ RSpec.describe "posts/_form.html.haml", type: :view do
     end
     it 'can render' do
       render
-      assert_select "form input", :count => 5
+      assert_select "form input", :count => 6
 
     end
 end
