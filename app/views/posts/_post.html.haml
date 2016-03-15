@@ -1,4 +1,4 @@
-.col-md-4{:id => "post_#{post.id}"}
+.col-md-12{:id => "post_#{post.id}"}
   .panel.panel-primary
     .panel-heading
       .panel-title
@@ -6,6 +6,6 @@
     .panel-body
       =post.description
     .panel-footer
-      = link_to "Edytuj", board_post_edit_ajax_path(@board,post), remote: true
+      = link_to "Edytuj"
       = link_to "Destroy", [@board,post], method: :delete, class: "btn btn-danger", remote: true
-#div_id
+#div_id.col-md-12
