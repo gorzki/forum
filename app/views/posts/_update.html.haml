@@ -1,0 +1,21 @@
+=form_for [@board,@post], :method => :put, remote: true do |f|
+  .modal.fade{"aria-labelledby" => "my_Modal_Label", :id => "update_post_#{@post.id}", :role => "dialog", :tabindex => "-1"}
+    .modal-dialog
+      .modal-content
+        .modal-header
+          %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+            %span{"aria-hidden" => "true"} &times;
+          %h4#my_Modal_Label.modal-title
+            Edytuj post
+        .modal-body
+          %p
+            = f.label :title, :title
+            = f.text_field :title, class: "form-control"
+          %p
+            = f.label :description, :description
+            = f.text_field :description, class: "form-control"
+
+            = f.hidden_field :board_id, :value => @board.id, class: "form-control"
+        .modal-footer
+          %button.btn.btn-default{"data-dismiss" => "modal", :id => "update_button_#{@post.id}", :type => "button"} Close
+          = submit_tag "Update", class: "btn btn-primary"

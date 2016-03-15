@@ -5,7 +5,7 @@
         = pluralize(@post.errors.count, "error")
         prohibited this advert from being saved:
       %ul
-        - @post.errors.full_posts.each do |msg|
+        - @post.errors.full_messages.each do |msg|
           %li= msg
   %p
     = f.label :title, :title

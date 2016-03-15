@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_filter :authenticate_user!
-  before_action :set_post, only: [:show,  :edit, :update, :destroy]
+  before_action :set_post, only: [:show,  :edit, :update, :destroy, :edit_ajax]
   before_action :set_board
 
   def index
@@ -13,6 +13,13 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+  end
+
+  def edit_ajax
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.js
+    end
   end
 
   def create
