@@ -1,0 +1,20 @@
+= form_for @user_to_board do |f|
+  - if @user_to_board.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@user_to_board.errors.count, "error")
+        prohibited this advert from being saved:
+      %ul
+        - @user_to_board.errors.full_messages.each do |msg|
+          %li= msg
+  %p
+    = f.label :user_id
+    = f.select :user_id, options_from_collection_for_select(User.all, :id, :email)
+  %p
+    = f.label :board_id
+    = f.select :board_id, options_from_collection_for_select(Board.all, :id, :title)
+  %p
+    = f.label :is_moderator
+    = f.check_box :is_moderator
+  %p
+    = f.submit class: "btn btn-primary"

@@ -2,6 +2,9 @@ class User < ActiveRecord::Base
   has_many :messeges
   has_many :posts
 
+  has_many :users_to_boards
+  has_many :boards, through: :users_to_boards
+
   enum role: [:guest, :user, :moderator, :admin]
 
   devise :database_authenticatable, :registerable,

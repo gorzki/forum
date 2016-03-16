@@ -1,0 +1,21 @@
+%h1 Lista uzytkownikow przypisanych do forum
+.table-responsive
+  %table.table
+    %tr
+      %th.text-center #
+      %th.text-center Uzytkownik
+      %th.text-center Forum
+      %th.text-center Moderator
+      %th.text-center Akcja
+    - @user_to_boards.each do |utb|
+      %tr
+        %td.text-center= utb.id
+        %td.text-center= utb.user.email
+        %td.text-center= utb.board.title
+        %td.text-center= utb.is_moderator
+        %td.text-center
+          .btn-group
+            =link_to "Edit", edit_user_to_board_path(utb), class:'btn btn-default'
+            =link_to "Destroy", utb, data: {method: :delete, confirm: "Jesteś pewien?"}, class:'btn btn-danger'
+
+= link_to "Przydziel uzytkownika do forum", new_user_to_board_path, class: "btn btn-primary"

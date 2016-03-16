@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   resources :boards do
     resources :posts
     get 'posts/:id/edit_ajax' => "posts#edit_ajax", as: "post_edit_ajax"
-
   end
-
+  resources :user_to_boards
 end
