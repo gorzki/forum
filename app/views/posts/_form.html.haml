@@ -9,10 +9,11 @@
           %li= msg
   %p
     = f.label :title, :title
-    = f.text_field :title, class: "form-control", placeholder: "New post"
+    = f.text_field :title, class: "form-control"
   %p
     = f.label :description, :description
-    = f.text_field :description, class: "form-control", placeholder: ":3"
+    = f.text_field :description, class: "form-control"
 
-    = f.hidden_field :board_id, :value => @board.id
+    = f.hidden_field :board_id
+    = f.hidden_field :user_id
     = f.submit class: "btn btn-primary"

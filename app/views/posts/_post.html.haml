@@ -9,4 +9,5 @@
       .col-md-12{:id => "div_#{post.id}"}
       .panel-footer
         = link_to "Edytuj", board_post_edit_ajax_path(@board,post), remote: true
-        = link_to "Destroy", [@board,post], method: :delete, class: "btn btn-danger", remote: true
+        -if policy(post).destroy?
+          = link_to "Destroy", [@board,post], method: :delete, class: "btn btn-danger", remote: true

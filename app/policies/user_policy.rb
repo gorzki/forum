@@ -9,7 +9,7 @@ class UserPolicy
   def index?
     @current_user.admin?
   end
-
+  
   def show?
     @current_user.admin? || @current_user == @user
   end
