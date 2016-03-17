@@ -8,11 +8,12 @@ class BoardsController < ApplicationController
 
   def new
     @board = Board.new
+    authorize @board
   end
 
   def create
     @board = Board.new(board_params)
-
+    authorize @board
     respond_to do |format|
       if @board.save
         format.html { redirect_to board_posts_path(@board), notice: 'board was successfully created.' }
@@ -25,9 +26,11 @@ class BoardsController < ApplicationController
   end
 
   def edit
+    authorize @board
   end
 
   def update
+    authorize @board
     respond_to do |format|
       if @board.update(board_params)
         format.html { redirect_to boards_path, notice: 'board was successfully updated.' }
@@ -40,6 +43,7 @@ class BoardsController < ApplicationController
   end
 
   def destroy
+    authorize @board
     @board.destroy
     respond_to do |format|
       format.html { redirect_to boards_path }

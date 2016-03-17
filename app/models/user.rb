@@ -1,18 +1,17 @@
 class User < ActiveRecord::Base
   has_many :messeges
-  has_many :posts
+  has_many :posts, dependent: :destroy
 
-  has_many :users_to_boards
-  has_many :boards, through: :users_to_boards
-
-  enum role: [:guest, :user, :moderator, :admin]
+  has_many :user_to_boards, dependent: :destroy
+  has_many :boards, through: :user_to_boards
+  enum role: [:user, :admin]
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
  after_initialize :set_default_role, :if => :new_record?
  def set_default_role
-   self.role ||= :guest
+   self.role ||= :user
  end
 
 end
