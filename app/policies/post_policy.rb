@@ -1,5 +1,5 @@
-class PostPolicy
-  attr_reader :current_user, :post
+class PostPolicy < BoardPolicy
+  attr_reader :current_user, :post, :board
 
   def initialize(current_user, post)
     @current_user = current_user
@@ -7,7 +7,7 @@ class PostPolicy
   end
 
   def index?
-    @current_user.admin?
+    @current_user.admin? || @current_user.board_ids.include?(@post.b)
   end
 
   def show?

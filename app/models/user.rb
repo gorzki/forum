@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :messeges
+  has_many :messages
   has_many :posts, dependent: :destroy
 
   has_many :user_to_boards, dependent: :destroy
